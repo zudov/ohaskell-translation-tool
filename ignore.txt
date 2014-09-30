@@ -1,0 +1,6 @@
+stdin
+stdout
+tuple
+Haskell
+UDP-datagram
+Hackage
