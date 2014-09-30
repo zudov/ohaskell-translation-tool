@@ -1,6 +1,6 @@
 import Text.Pandoc
 import Text.Pandoc.Walk
-import Data.Char (toUpper)
+import Data.Char (toLower)
 
 main :: IO ()
 main = interact (writeMarkdown writer . cleanup . readMarkdown def)
@@ -15,8 +15,7 @@ inlines (Code attr c) = Code attr $ if isVowel $ head c then "output" else "inpu
 inlines x = x
 
 isVowel :: Char -> Bool
-isVowel c = elem c $ vs ++ map toUpper vs
-    where vs = "aeiou"
+isVowel c = elem (toLower c) "aeiou"
 
 blocks :: Block -> Block
 blocks (CodeBlock ("",[],[]) code) = Para $ replicate (length $ lines code) LineBreak
